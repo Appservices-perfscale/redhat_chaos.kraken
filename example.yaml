@@ -1,0 +1,14 @@
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Summon the kraken
+      redhat_chaos.kraken.kraken:
+        scenarios: 
+          - name: foo
+            cmd: podman run blah             
+          - name: bar
+            cmd: stress 1000
+
+        exec_mode: parallel
+        fail_mode: fast
